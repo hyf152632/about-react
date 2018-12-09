@@ -66,9 +66,11 @@ this.setState((prevState, props) => ({
 
 这就是为什么状态通常被称为局部或封装。 除了拥有并设置它的组件外，其它组件不可访问.
 
-在 React 应用程序中，组件是有状态还是无状态被认为是可能随时间而变化的组件的实现细节。 可以在有状态组件中使用无状态组件，反之亦然。
+在 React 应用程序中，组件是有状态还是无状态被认为是可能随时间而变化的组件的实现细节。
+可以在有状态组件中使用无状态组件，反之亦然。
 
-你必须谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。如果你忘记绑定 this.handleClick 并把它传入 onClick, 当你调用这个函数的时候 this 的值会是 undefined。
+你必须谨慎对待 JSX 回调函数中的 this，类的方法默认是不会绑定 this 的。
+如果你忘记绑定 this.handleClick 并把它传入 onClick, 当你调用这个函数的时候 this 的值会是 undefined。
 
 事件绑定：
 如果使用 bind 让你很烦，这里有两种方式可以解决。
@@ -79,7 +81,7 @@ this.setState((prevState, props) => ({
 
 传递参数：
 
-```js
+```html
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```
@@ -119,8 +121,10 @@ class Popper extends React.Component {
 ```
 
 阻止组件渲染
-在极少数情况下，你可能希望隐藏组件，即使它被其他组件渲染。让 render 方法返回 null 而不是它的渲染结果即可实现。
-组件的 render 方法返回 null 并不会影响该组件生命周期方法的回调。例如，componentWillUpdate 和 componentDidUpdate 依然可以被调用。
+在极少数情况下，你可能希望隐藏组件，即使它被其他组件渲染。
+让 render 方法返回 null 而不是它的渲染结果即可实现。
+组件的 render 方法返回 null 并不会影响该组件生命周期方法的回调。
+例如，componentWillUpdate 和 componentDidUpdate 依然可以被调用。
 
 如果列表可以重新排序，我们不建议使用索引来进行排序，因为这会导致渲染变得很慢。
 
