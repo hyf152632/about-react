@@ -61,3 +61,48 @@ export default class RandomJoke extends React.Component {
 ```
 
 聪明组件的 render 函数一般都这样简单，因为渲染不是他们操心的业务，他们的主业是获取数据。
+
+### PureComponent
+
+因为傻瓜组件一般没有自己的状态，所以，可以像上面的 Joke 一样实现为函数形式，其实，我们可以进一步改进，利用 PureComponent 来提高傻瓜组件的性能。
+
+函数式组件因为没有`shouldComponentUpdate`钩子， 所以即使是相同的 props 也会再次执行一遍渲染。
+
+改进后的 Joke 组件：
+
+```js
+class Joke extends React.PureComponent {
+  render() {
+    return (
+      <div>
+        <img src={SmileFace} />
+        {this.props.value || "loading..."}
+      </div>
+    );
+  }
+}
+```
+
+值得一提的是，PureComponent 中 shouldComponentUpdate 对 props 做得只是浅层比较，不是深层比较，如果 props 是一个深层对象，就容易产生问题。
+
+比如，两次渲染传入的某个 props 都是同一个对象，但是对象中某个属性的值不同，这在 PureComponent 眼里，props 没有变化，不会重新渲染，但是这明显不是我们想要的结果。
+
+### React.memo
+
+虽然 PureComponent 可以提高组件渲染性能，但是它也不是没有代价的，它逼迫我们必须把组件实现为 class，不能用纯函数来实现组件。
+
+如果你使用 React v16.6.0 之后的版本，可以使用一个新功能 React.memo 来完美实现 React 组件，上面的 Joke 组件可以这么写：
+
+```js
+const Joke = React.memo(() => (
+  <div>
+    <img src={SmileFace} />
+    {this.props.value || "loading..."}
+  </div>
+));
+```
+
+React.memo 即利用了 shouldComponentUpdate, 又不要求我们写一个 class, 这也体现出 React 逐步向完全函数式编程前进。
+
+## 高阶组件
+
