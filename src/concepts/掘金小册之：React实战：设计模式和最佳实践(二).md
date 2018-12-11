@@ -105,3 +105,4 @@ const Joke = React.memo(() => (
 React.memo 即利用了 shouldComponentUpdate, 又不要求我们写一个 class, 这也体现出 React 逐步向完全函数式编程前进。
 
 ## 高阶组件
+
