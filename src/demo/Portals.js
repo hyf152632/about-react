@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Component } from "react";
 import ReactDOM from "react-dom";
 
 export default class PortalSample extends PureComponent {
@@ -32,3 +32,56 @@ export default class PortalSample extends PureComponent {
     );
   }
 }
+
+class Modal extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.container = document.createElement('div')
+    document.body.appendChild(this.container)
+  }
+
+  componentWillUnmount(){
+    document.body.removeChild(this.container)
+  }
+
+  renderModal() {
+    const {onClose, children} = this.props
+    return (
+      <div className='modal'>
+        <span onClick={onClose} className='close'>&times</span>
+        <div className='content'>{children}</div>
+      </div>
+    )
+  }
+
+  render() {
+    //创建的DOM树挂载到this.container指向的div节点下面
+    return ReactDOM.createPortal(this.renderModal, this.container)
+  }
+}
+
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {showModal: true}
+  }
+  closeModal = () => {
+    this.setState({showModal: false})
+  }
+
+  render() {
+    const {showModal} = this.state
+    return (
+      <div>
+      <h2>Dashboard</h2>
+      {
+        showModal && (
+          <Modal onClose={this.closeModal}>Modal Dialog</Modal>
+        )
+      }
+      </div>
+    )
+  }
+}
+
+export App
