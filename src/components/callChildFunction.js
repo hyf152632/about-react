@@ -5,6 +5,7 @@ class Parent extends Component {
     this.child = ref;
   };
   click = e => {
+    if (e) e.stopPropagation();
     this.child.myName();
   };
   render() {

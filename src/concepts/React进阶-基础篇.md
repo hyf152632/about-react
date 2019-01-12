@@ -2,7 +2,7 @@
 
 ## 1
 
-计算机的不同语言、不同技术和算法就好比一堆便宜或者 昂贵的工具(如锥子和刨子)，其
+计算机的不同语言、不同技术和算法就好比一堆便宜或者昂贵的工具(如锥子和刨子)，其
 实这些都不重要，因为大家都忽略了，做出漂亮器具的是那个工匠，而不是工具。脑子里的经验积
 累、天赋、执着与认真的态度、不停尝试、追求完美的态度，加起来才能创造好的作品与产品。计
 算机语言就像赛车场上的跑车，换了车队和跑车，舒马赫还是 F1 车神，观众还是会为其欢呼雀跃，
@@ -37,13 +37,13 @@ onclick ---> onclick
 
 JSX 只是 React.CreateElement 的语法糖
 
-React 组件正是由 props 和 state 两种类型的数据驱动渲染 组件 U。 props 是组件对外的接口，
-组件通过 props 接收外部传入的数据(包括方法)；sate 是组对内的接口，组件内部状态的变化
-通过 sae 来反映。另外， props 是只读的，你不能在组件内都 修改 props；ste 是可变的，组件状
-态的变化通过修改 state 来实现。在第 4 章中，我们还会对 pror ps 和 state y 进行详细比较
+React 组件正是由 props 和 state 两种类型的数据驱动渲染 组件 UI。 props 是组件对外的接口，
+组件通过 props 接收外部传入的数据(包括方法)；sate 是组件对内的接口，组件内部状态的变化
+通过 state 来反映。另外， props 是只读的，你不能在组件内都 修改 props；ste 是可变的，组件状
+态的变化通过修改 state 来实现。在第 4 章中，我们还会对 props 和 state 进行详细比较
 
-在开发 React 应用时，一定要先认真思考哪些组件应该设计 成有状态组件，哪些组件应该设计
-成无状态组件。并且，应该尽可能多地使用无状态组件，无状态 组件不用关心状态的变化，只聚焦
+在开发 React 应用时，**一定要先**认真思考哪些组件应该设计成有状态组件，哪些组件应该设计
+成无状态组件。并且，应该尽可能多地使用无状态组件，无状态组件不用关心状态的变化，只聚焦
 于 UI 的展示，因而更容易被复用。 React 应用组件设计的一般 思路是，通过定义少数的有状态组
 件管理整个应用的状态变化，并且将状态通过 props 传递给其余 的无状态组件，由无状态组件完成
 页面绝大部分 UI 的渲染工作。总之，有状态组件主要关注处理 状态变化的业务逻辑，无状态组件
@@ -77,10 +77,11 @@ React 元素和 React 组件
 React 元素是一个 js 对象；
 React 组件是一个 class 或者函数， 它接收一些属性作为输入，返回一个 React 元素。
 
-render 方法中，根据组件的 props 和 state 返回一个 React 元素，用于描述组件的 UI， 通常 React 元素使用
-JSX 语法定义。 render 并不负责组件的实际渲染工作，它只是返回一个 UI 的描述，真正的渲染工作
-由 React 自身负责。 render 是一个纯函数，在这个方法中不能执行任何有副作用的操作， 所以不能在
-render 中调用 this.setState， 这会改变组件的状态。
+render 方法中，根据组件的 props 和 state 返回一个 React 元素，用于描述组件的 UI，
+通常 React 元素使用 JSX 语法定义。 render 并不负责组件的实际渲染工作，
+它只是返回一个 UI 的描述，真正的渲染工作由 React 自身负责。
+**render 是一个纯函数，在这个方法中不能执行任何有副作用的操作**，
+**所以**不能在 render 中调用 this.setState， 这会改变组件的状态。
 
 shouldComponentUpdate(nextProps, nextState)
 通过比较 nextProps, nextState 和组件当前的 props, state 决定这个方法的返回结果。这个方法
@@ -88,12 +89,12 @@ shouldComponentUpdate(nextProps, nextState)
 
 通过表单元素的 name 属性区分。
 
-通过 defaultValue（input, select, textarea） 为非受控表单元素组件指定默认值
-defaultChecked (input:type=checkbox, input:type=radio)
+通过 defaultValue (input, select, textarea) 为非受控表单元素组件指定默认值
+defaultChecked (input:type = checkbox, input:type = radio)
 
 ## React 16 新特性
 
-1. render 新的返回类型：数组（由 React 元素组成）和字符串；
+1. render 新的返回类型：数组 (由 React 元素组成) 和字符串；
 2. 错误处理(ComponentDidCatch(error, info));
 3. Portals
 4. 自定义 DOM 属性
