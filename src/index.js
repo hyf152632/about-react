@@ -8,6 +8,7 @@ import FunctionalWithDefaultProps from "./components/FunctionalDefaultProps.js";
 import DestructuringProps from "./components/pattern/DestructuringProps.js";
 import ParentCallChildMethod from "./components/callChildFunction.js";
 import SwitchComponent from "./components/SwitchComponent.js";
+import MouseOverComponent from "./components/MouseOverComponent.js";
 
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 
@@ -19,6 +20,14 @@ function App() {
       <Router>
         <div className="content-wrapper">
           <ul className="menu">
+            <li className="menu-item">
+              <NavLink
+                activeClassName="nav-selected"
+                to="/page/MouseOverComponent"
+              >
+                mouseover
+              </NavLink>
+            </li>
             <li className="menu-item">
               <NavLink activeClassName="nav-selected" to="/page/Timer">
                 Timer
@@ -77,6 +86,10 @@ function App() {
           </ul>
 
           <div className="page-container">
+            <Route
+              path="/page/MouseOverComponent"
+              component={MouseOverComponent}
+            />
             <Route path="/page/Timer" component={Timer} />
             <Route path="/page/ContextApi" component={Context} />
             <Route path="/page/RenderProps" component={NameProvider} />
