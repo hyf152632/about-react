@@ -9,6 +9,7 @@ import DestructuringProps from "./components/pattern/DestructuringProps.js";
 import ParentCallChildMethod from "./components/callChildFunction.js";
 import SwitchComponent from "./components/SwitchComponent.js";
 import MouseOverComponent from "./components/MouseOverComponent.js";
+import CustomButton from "./components/CustomButton";
 
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 
@@ -83,6 +84,11 @@ function App() {
                 SwitchComponent
               </NavLink>
             </li>
+            <li className="menu-item">
+              <NavLink activeClassName="nav-selected" to="/page/forwardRef">
+                forwardRef
+              </NavLink>
+            </li>
           </ul>
 
           <div className="page-container">
@@ -110,6 +116,7 @@ function App() {
               component={ParentCallChildMethod}
             />
             <Route path="/page/SwitchComponent" component={SwitchComponent} />
+            <Route path="/page/forwardRef" component={CustomButton} />
           </div>
         </div>
       </Router>
