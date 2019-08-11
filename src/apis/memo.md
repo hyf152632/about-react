@@ -37,7 +37,16 @@ otherwise return false
 export default React.memo(MyComponent, areEqual);
 ```
 
+
+This method only exists as a performance optimization.
+Do not rely on it to “prevent” a render, as this can lead to bugs.
+
+Note
+Unlike the shouldComponentUpdate() method on class components,
+the areEqual function returns true if the props are equal and false if the props are not equal.
+This is the inverse from shouldComponentUpdate.
 This method only exists as a performance optimization. Do not rely on it to “prevent” a render, as this can lead to bugs.
 
 Note
 Unlike the shouldComponentUpdate() method on class components, the areEqual function returns true if the props are equal and false if the props are not equal. This is the inverse from shouldComponentUpdate.
+
